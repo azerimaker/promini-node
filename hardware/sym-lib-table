@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "ProMini-Node-v1.0-50x50-rescue")(type "KiCad")(uri "${KIPRJMOD}/ProMini-Node-v1.0-50x50-rescue.kicad_sym")(options "")(descr ""))
+)

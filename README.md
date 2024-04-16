@@ -4,6 +4,10 @@ A LoRaWAN node based on the Arduino ProMini and the RFM95 LoRa module. Based on 
 * u.FL antenna connector
 * Grove connector for I2C (can also be used for analog or digital signals)
 * Circuitry to measure battery voltage
+* Added silksreen labels
+* Slightly improved layout
+
+![3D rendered Board](./images/ProMini-Node-v01.jpg)
 
 ![3D rendered PCB](./images/pcb01.jpg)
 
@@ -13,6 +17,8 @@ A LoRaWAN node based on the Arduino ProMini and the RFM95 LoRa module. Based on 
 * Pin headers
 * Edge-mounted SMA connector (e.g. [this part](https://www.digikey.com/product-detail/en/rf-solutions/CON-SMA-EDGE-S/CON-SMA-EDGE-S-ND/5845767)) or wire-antenna of correct length
 
+![3D rendered Board](./images/ProMini-Node-v01-f.jpg)
+
 ## Additional information
 * Board can be powered directly from 2 AA batteries to the 3.3V input
 * [Full tutorial using this board by Frank Beks](https://www.thethingsnetwork.org/labs/story/creating-a-ttn-node)
@@ -21,3 +27,4 @@ A LoRaWAN node based on the Arduino ProMini and the RFM95 LoRa module. Based on 
 * Licensed under Creative Commons Attribution-ShareAlike 4.0 Unported License (CC BY-SA 4.0)
 * Original work by [Doug Larue](https://github.com/dlarue)
 * Modifications by [Severin Schols](https://github.com/tiefpunkt)
+* Further modifications by [Orkhan Amiraslan](https://github.com/azerimaker)

@@ -4076,13 +4076,13 @@
 		)
 		(model "/Users/azerimaker/OneDrive/Engineering/PCB_Projects/3D-Packages/RF/RFM95-LoRa-v15.step"
 			(offset
-				(xyz -1.35 1 0)
+				(xyz 14.65 -15 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -90 0 0)
+				(xyz -90 0 180)
 			)
 		)
 	)

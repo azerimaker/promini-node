@@ -1336,7 +1336,7 @@
 		(descr "IC, ARDUINO_PRO_MINI x 0,6\"")
 		(tags "DIL ARDUINO PRO MINI")
 		(property "Reference" "uP1"
-			(at -0.072 -0.144 360)
+			(at -0.072 -0.144 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "f25a11b3-e44d-49ff-80c1-1d367557136e")
@@ -3818,7 +3818,7 @@
 		(descr "RFM69HW")
 		(tags "RFM69HW, RF69")
 		(property "Reference" "U1"
-			(at 4.648 6.918 360)
+			(at 4.648 6.918 0)
 			(layer "F.SilkS")
 			(uuid "3eae377d-fd7b-4150-b98d-1a632b962e19")
 			(effects

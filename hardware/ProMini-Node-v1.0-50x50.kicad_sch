@@ -3493,7 +3493,7 @@
 		)
 		(uuid 90660569-e7c8-418d-b1a7-5b3759f08422)
 	)
-	(text "Pro		RFM9x	\nMini\n-----------\nVCC	 	3.3V\nGND	 	GND	 \nD2		DIO0	 \nD3		DIO1\nD7		DIO2	 \nD6		DIO5\nD5		RESET	 	 \nD10-SS	NSS	 \nMOSI	MOSI	 \nMISO	MISO	 \nCLK		SCK"
+	(text "Pro			RFM9x	\nMini\n-----------\nVCC	 		3.3V\nGND	 		GND	 \nD2			DIO0	 \nD3			DIO1\nD7			DIO2	 \nD6			DIO5\nD5			RESET	 	 \nD10-SS		NSS	 \nD11-MOSI	MOSI	 \nD12-MISO	MISO	 \nD13-CLK		SCK"
 		(exclude_from_sim no)
 		(at 179.832 138.43 0)
 		(effects

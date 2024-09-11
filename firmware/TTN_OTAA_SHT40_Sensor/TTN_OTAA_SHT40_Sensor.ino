@@ -1,6 +1,9 @@
 /*******************************************************************************
  * Copyright (c) 2015 Thomas Telkamp and Matthijs Kooijman
- * Copyright (c) 2024 Orkhan Amiraslan @makespace.az
+ * Copyright (c) 2024 Orkhan Amiraslan @azerimaker - Makerspace Azeraijan LLC @makerspace.az
+ *
+ * Used Arduino Pro Mini ATmega328P 3.3V 8 MHz dev-board + RFM95W module -> https://github.com/azerimaker/promini-node
+ * Used sensor module -> https://makerstore.az/product/sht40-temp-humidity-sensor-module-mt-labs/
  *
  * Permission is hereby granted, free of charge, to anyone
  * obtaining a copy of this document and accompanying files,
@@ -28,23 +31,26 @@
  *
  * Do not forget to define the radio type correctly in config.h.
  *
- *******************************************************************************/
+ *******************************************************************************
+ * TTN Payload formatter:
 
-  /* TTN Payload formatter:
- 
- function Decoder(bytes, port) {
-  var result = "";
-  for (var i = 0; i < bytes.length; i++) {
-    result += (String.fromCharCode(bytes[i]));
-  }
+ function decodeUplink(input) {
+  var data = {};
+  data.temperature = ((input.bytes[0] << 8) + input.bytes[1])/100;
+  data.humidity = ((input.bytes[2] << 8) + input.bytes[3])/100;
 
-  return {text: result};
+  return {
+    data: data,
+  };
 }
+ 
+  *******************************************************************************
  */
 
 #include <lmic.h> // https://github.com/azerimaker/arduino-lmic
 #include <hal/hal.h>
 #include <SPI.h>
+#include <Adafruit_SHT4x.h> // https://github.com/adafruit/Adafruit_SHT4x
 
 // This EUI must be in little-endian format, so least-significant-byte
 // first. When copying an EUI from ttnctl output, this means to reverse
@@ -59,16 +65,18 @@ static const u1_t PROGMEM APPKEY[16] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 
 void os_getArtEui (u1_t* buf) { memcpy_P(buf, APPEUI, 8);}
 void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI, 8);}
-void os_getDevKey (u1_t* buf) {  memcpy_P(buf, APPKEY, 16);}
+void os_getDevKey (u1_t* buf) { memcpy_P(buf, APPKEY, 16);}
 
-static uint8_t mydata[] = "Hello, world!";
+Adafruit_SHT4x sht40;
+// Variables to store sensor data
+float temperature = 0;
+float humidity = 0;
+
+static uint8_t payload[4]; // 4 byte packet size
 static osjob_t sendjob;
 
-// Schedule TX every this many seconds (might become longer due to duty
-// cycle limitations).
-const unsigned TX_INTERVAL = 15;
+const unsigned TX_INTERVAL = 30; // Schedule TX every this many seconds
 
-// Pin mapping
 // Pin mapping
 const lmic_pinmap lmic_pins = {
     .nss = 10,                  // NSS
@@ -148,12 +156,43 @@ void onEvent (ev_t ev) {
 }
 
 void do_send(osjob_t* j){
+
+    // Read the SHT40 sensor
+    sensors_event_t temp_event, humidity_event;
+    sht40.getEvent(&humidity_event, &temp_event);
+
+    temperature = temp_event.temperature;
+    humidity = humidity_event.relative_humidity;
+
+    Serial.print(F("Temperature: ")); 
+    Serial.print(temperature);
+    Serial.print(F(" C, Humidity: "));
+    Serial.print(humidity);
+    Serial.println(F("% RH"));
+
+    // Convert temperature and humidity to bytes
+    int16_t temp_int = (int16_t)(temperature * 100); // Multiply by 100 to keep two decimal places
+    int16_t hum_int = (int16_t)(humidity * 100);     // Multiply by 100 for the same reason
+
+    payload[0] = temp_int >> 8;
+    payload[1] = temp_int & 0xFF;
+    payload[2] = hum_int >> 8;
+    payload[3] = hum_int & 0xFF;
+
+    /* // Alternative code
+    payload[0] = highByte(temp_int);
+    payload[1] = lowByte(temp_int);
+    payload[2] = highByte(hum_int);
+    payload[3] = lowByte(hum_int); 
+    */
+
     // Check if there is not a current TX/RX job running
     if (LMIC.opmode & OP_TXRXPEND) {
         Serial.println(F("OP_TXRXPEND, not sending"));
     } else {
         // Prepare upstream data transmission at the next possible time.
-        LMIC_setTxData2(1, mydata, sizeof(mydata)-1, 0);
+        LMIC_setTxData2(1, payload, sizeof(payload), 0);
+        //LMIC_setTxData2(1, payload, sizeof(payload), 0);
         Serial.println(F("Packet queued"));
     }
     // Next TX is scheduled after TX_COMPLETE event.
@@ -163,6 +202,56 @@ void setup() {
     Serial.begin(9600);
     Serial.println(F("Starting"));
 
+    // Initialize the SHT40 sensor
+    if (!sht40.begin()) {
+        Serial.println(F("Couldn't find SHT40 sensor!"));
+        while (1);
+    }
+    Serial.println(F("Found SHT40 sensor"));
+    Serial.print(F("Serial number 0x"));
+    Serial.println(sht40.readSerial(), HEX);
+
+    // You can have 3 different precisions, higher precision takes longer
+  sht40.setPrecision(SHT4X_HIGH_PRECISION);  // <--modify here
+  switch (sht40.getPrecision()) {
+     case SHT4X_HIGH_PRECISION: 
+       Serial.println(F("High precision"));
+       break;
+     case SHT4X_MED_PRECISION: 
+       Serial.println(F("Med precision"));
+       break;
+     case SHT4X_LOW_PRECISION: 
+       Serial.println(F("Low precision"));
+       break;
+  }
+
+  // You can have 6 different heater settings
+  // higher heat and longer times uses more power
+  // and reads will take longer too!
+  sht40.setHeater(SHT4X_NO_HEATER); // <--modify here
+  switch (sht40.getHeater()) {
+     case SHT4X_NO_HEATER: 
+       Serial.println(F("No heater"));
+       break;
+     case SHT4X_HIGH_HEATER_1S: 
+       Serial.println(F("High heat for 1 second"));
+       break;
+     case SHT4X_HIGH_HEATER_100MS: 
+       Serial.println(F("High heat for 0.1 second"));
+       break;
+     case SHT4X_MED_HEATER_1S: 
+       Serial.println(F("Medium heat for 1 second"));
+       break;
+     case SHT4X_MED_HEATER_100MS: 
+       Serial.println(F("Medium heat for 0.1 second"));
+       break;
+     case SHT4X_LOW_HEATER_1S: 
+       Serial.println(F("Low heat for 1 second"));
+       break;
+     case SHT4X_LOW_HEATER_100MS: 
+       Serial.println(F("Low heat for 0.1 second"));
+       break;
+  }
 
     // LMIC init
     os_init();

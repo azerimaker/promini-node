@@ -29,7 +29,8 @@ A LoRaWAN node based on the Arduino ProMini and the RFM95 LoRa module. Based on 
 ## Additional information
 * Board can be powered directly from 2 AA batteries to the 3.3V input
 * Use this modified [LoRaWAN stack](https://github.com/azerimaker/arduino-lmic) for low memory footprint
-* [Full tutorial using this board by Frank Beks](https://www.thethingsnetwork.org/labs/story/creating-a-ttn-node)
+* Online [interactive BOM viewer](https://htmlpreview.github.io/?https://github.com/azerimaker/promini-node/blob/master/hardware/bom/ibom.html)
+* [Tutorial using this board by Frank Beks](https://www.thethingsnetwork.org/labs/story/creating-a-ttn-node)
 
 ## License
 * Licensed under Creative Commons Attribution-ShareAlike 4.0 Unported License (CC BY-SA 4.0)

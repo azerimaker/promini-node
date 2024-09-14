@@ -14,7 +14,7 @@
 
 
 #include <SPI.h>              // include libraries
-#include <LoRa.h>
+#include <LoRa.h>             // https://github.com/sandeepmistry/arduino-LoRa
 
 const int csPin = 10;         // LoRa radio chip select
 const int resetPin = 5;       // LoRa radio reset
@@ -38,7 +38,7 @@ void setup() {
   // override the default CS, reset, and IRQ pins (optional)
   LoRa.setPins(csPin, resetPin, irqPin);// set CS, reset, IRQ pin
 
-  if (!LoRa.begin(868E6)) {             // initialize ratio at 915 MHz
+  if (!LoRa.begin(868E6)) {             // initialize ratio at 868 MHz
     Serial.println("LoRa init failed. Check your connections.");
     while (true);                       // if failed, do nothing
   }
@@ -48,7 +48,7 @@ void setup() {
 
 void loop() {
   if (millis() - lastSendTime > interval) {
-    String message = "HeLoRa World - from Node 1!";   // send a message
+    String message = "HeLoRa World from Node 2!";   // send a message
     sendMessage(message);
     Serial.println("Sending " + message);
     lastSendTime = millis();            // timestamp the message

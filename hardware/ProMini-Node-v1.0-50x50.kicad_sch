@@ -3020,7 +3020,7 @@
 		)
 	)
 	(junction
-		(at 219.71 125.73)
+		(at 219.71 123.825)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "075ea95c-5a92-4d13-a89d-c92390a2f15d")
@@ -3103,7 +3103,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 127) (xy 219.71 125.73)
+			(xy 219.71 125.095) (xy 219.71 123.825)
 		)
 		(stroke
 			(width 0)
@@ -3133,7 +3133,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 125.73) (xy 219.71 121.92)
+			(xy 219.71 123.825) (xy 219.71 120.015)
 		)
 		(stroke
 			(width 0)
@@ -3180,6 +3180,16 @@
 			(type default)
 		)
 		(uuid "5a5a0b27-83af-4d65-8ac3-f32e1e255a86")
+	)
+	(wire
+		(pts
+			(xy 227.33 127.635) (xy 227.33 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5e8c597e-7996-4a5d-aa64-5783630ab717")
 	)
 	(wire
 		(pts
@@ -3243,7 +3253,7 @@
 	)
 	(wire
 		(pts
-			(xy 232.41 125.73) (xy 234.95 125.73)
+			(xy 232.41 123.825) (xy 234.95 123.825)
 		)
 		(stroke
 			(width 0)
@@ -3313,6 +3323,16 @@
 	)
 	(wire
 		(pts
+			(xy 219.71 132.715) (xy 219.71 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "982007fd-2b5c-48c7-a932-ad387100a08f")
+	)
+	(wire
+		(pts
 			(xy 106.68 120.65) (xy 114.3 120.65)
 		)
 		(stroke
@@ -3323,7 +3343,7 @@
 	)
 	(wire
 		(pts
-			(xy 222.25 125.73) (xy 219.71 125.73)
+			(xy 222.25 123.825) (xy 219.71 123.825)
 		)
 		(stroke
 			(width 0)
@@ -3463,7 +3483,7 @@
 	)
 	(wire
 		(pts
-			(xy 234.95 121.92) (xy 234.95 125.73)
+			(xy 234.95 120.015) (xy 234.95 123.825)
 		)
 		(stroke
 			(width 0)
@@ -3493,6 +3513,30 @@
 		)
 		(uuid 90660569-e7c8-418d-b1a7-5b3759f08422)
 	)
+	(text "+3.3V"
+		(exclude_from_sim no)
+		(at 190.5 53.975 0)
+		(effects
+			(font
+				(size 2 2)
+				(thickness 0.4)
+				(bold yes)
+			)
+		)
+		(uuid "470e234d-1e8e-4b16-a5e6-2ae72db06597")
+	)
+	(text "RAW"
+		(exclude_from_sim no)
+		(at 189.23 48.26 0)
+		(effects
+			(font
+				(size 2 2)
+				(thickness 0.4)
+				(bold yes)
+			)
+		)
+		(uuid "93a5abf5-6a02-411d-a837-0082766b3e78")
+	)
 	(text "Pro			RFM9x	\nMini\n-----------\nVCC	 		3.3V\nGND	 		GND	 \nD2			DIO0	 \nD3			DIO1\nD7			DIO2	 \nD6			DIO5\nD5			RESET	 	 \nD10-SS		NSS	 \nD11-MOSI	MOSI	 \nD12-MISO	MISO	 \nD13-CLK		SCK"
 		(exclude_from_sim no)
 		(at 179.832 138.43 0)
@@ -3515,6 +3559,18 @@
 			)
 		)
 		(uuid "b6566102-d0b9-43dd-9b45-1b847e1de05b")
+	)
+	(text "RAW"
+		(exclude_from_sim no)
+		(at 240.665 118.11 0)
+		(effects
+			(font
+				(size 2 2)
+				(thickness 0.4)
+				(bold yes)
+			)
+		)
+		(uuid "cbc99375-ce50-4e26-b7ad-6f8a52e1a6bf")
 	)
 	(global_label "RX1"
 		(shape input)
@@ -6080,7 +6136,7 @@
 	)
 	(symbol
 		(lib_id "ProMini-Node-v1.0-50x50-rescue:SolderJumper_3_Open-Jumper")
-		(at 227.33 125.73 0)
+		(at 227.33 123.825 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6088,7 +6144,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005da3471a")
 		(property "Reference" "JP1"
-			(at 227.33 123.444 0)
+			(at 227.33 121.539 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6096,7 +6152,7 @@
 			)
 		)
 		(property "Value" "Voltage Measurement"
-			(at 239.776 127.508 0)
+			(at 239.776 125.603 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6104,7 +6160,7 @@
 			)
 		)
 		(property "Footprint" "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels"
-			(at 227.33 125.73 0)
+			(at 227.33 123.825 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6113,7 +6169,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 227.33 125.73 0)
+			(at 227.33 123.825 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6122,7 +6178,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 227.33 125.73 0)
+			(at 227.33 123.825 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6546,7 +6602,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 219.71 130.81 0)
+		(at 219.71 128.905 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6554,7 +6610,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005da44848")
 		(property "Reference" "R1"
-			(at 213.106 128.778 0)
+			(at 213.106 126.873 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6563,7 +6619,7 @@
 			)
 		)
 		(property "Value" "100K"
-			(at 212.852 131.064 0)
+			(at 212.852 129.159 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6572,7 +6628,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 217.932 130.81 90)
+			(at 217.932 128.905 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6581,7 +6637,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 219.71 130.81 0)
+			(at 219.71 128.905 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6590,7 +6646,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 219.71 130.81 0)
+			(at 219.71 128.905 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6615,7 +6671,7 @@
 	)
 	(symbol
 		(lib_id "ProMini-Node-v1.0-50x50-rescue:+3.3V-power")
-		(at 219.71 121.92 0)
+		(at 219.71 120.015 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6623,7 +6679,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005da45059")
 		(property "Reference" "#PWR0106"
-			(at 219.71 125.73 0)
+			(at 219.71 123.825 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6632,7 +6688,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 219.71 118.364 0)
+			(at 219.71 116.459 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6640,7 +6696,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 219.71 121.92 0)
+			(at 219.71 120.015 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6648,7 +6704,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 219.71 121.92 0)
+			(at 219.71 120.015 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6656,7 +6712,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 219.71 121.92 0)
+			(at 219.71 120.015 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6743,7 +6799,7 @@
 	)
 	(symbol
 		(lib_id "power:VCC")
-		(at 234.95 121.92 0)
+		(at 234.95 120.015 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6751,7 +6807,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005da47af3")
 		(property "Reference" "#PWR0108"
-			(at 234.95 125.73 0)
+			(at 234.95 123.825 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6760,7 +6816,7 @@
 			)
 		)
 		(property "Value" "VCC"
-			(at 235.3818 117.5258 0)
+			(at 235.3818 115.6208 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6768,7 +6824,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 234.95 121.92 0)
+			(at 234.95 120.015 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6777,7 +6833,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 234.95 121.92 0)
+			(at 234.95 120.015 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6786,7 +6842,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 234.95 121.92 0)
+			(at 234.95 120.015 0)
 			(effects
 				(font
 					(size 1.27 1.27)
